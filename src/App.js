@@ -15,7 +15,9 @@ class App extends Component{
   }  
   
   async componentDidMount(){       
-    console.log("componentDidMount App");        
+    console.log("componentDidMount App");    
+    
+    
     const list = await this.temp.sendGet("Girl/data");            
     this.setState({list});
   }
@@ -24,7 +26,7 @@ class App extends Component{
     console.log("voy a eliminarte: "+idGirl);
     const res = await this.temp.sendDelete("Girl/data/"+idGirl);
     if(res.status){
-      const list = await this.temp.sendGet("Girl/data");            
+      const list = res.data;
       this.setState({list});
     }
   }
